@@ -3,7 +3,7 @@ import telebot
 import requests
 
 BOT_TOKEN = '8318157161:AAH4xklAtiJHtIUphDj4VtAsIF2th5-X8FA'
-KOBOLD_API_URL = 'https://favourite-qualify-probe-centered.trycloudflare.com/v1'
+KOBOLD_API_URL = 'https://carry-pichunter-considering-democrat.trycloudflare.com/v1'
 
 bot = telebot.TeleBot(BOT_TOKEN)
 app = Flask(__name__)
