@@ -6,7 +6,7 @@ BOT_TOKEN = '8318157161:AAH4xklAtiJHtIUphDj4VtAsIF2th5-X8FA'
 KOBOLD_API_URL = 'https://favourite-qualify-probe-centered.trycloudflare.com/v1'
 
 bot = telebot.TeleBot(BOT_TOKEN)
-app = Flask(name)
+app = Flask(__name__)
 
 @app.route('/', methods=['POST'])
 def webhook():
