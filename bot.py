@@ -1,20 +1,25 @@
-import telebot
+
 from flask import Flask, request
-from telebot import types
+import requests
 
-API_TOKEN = '8318157161:AAH4xklAtiJHtIUphDj4VtAsIF2th5-X8FA'
-bot = telebot.TeleBot(API_TOKEN)
-app = Flask(name)
+app = Flask(__name__)
 
-@bot.message_handler(commands=['start'])
-def send_welcome(message):
-    bot.reply_to(message, "✅ Bot is working!")
+BOT_TOKEN = "8318157161:AAH4xklAtiJHtIUphDj4VtAsIF2th5-X8FA"
 
-@app.route('/', methods=['POST'])  # 👈 Webhook route (required)
+URL = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
+
+@app.route("/", methods=["POST"])
 def webhook():
-    update = types.Update.de_json(request.stream.read().decode("utf-8"))
-    bot.process_new_updates([update])
-    return "ok", 200
+    data = request.get_json()
+    chat_id = data["message"]["chat"]["id"]
+    text = data["message"].get("text", "")
+    payload = {"chat_id": chat_id, "text": f"Received: {text}"}
+    requests.post(URL, json=payload)
+    return {"ok": True}
 
-if name == "main":
+@app.route("/", methods=["GET"])
+def index():
+    return "Bot is running."
+
+if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
