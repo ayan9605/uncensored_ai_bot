@@ -34,5 +34,5 @@ import requests
 requests.get(f"https://api.telegram.org/bot{BOT_TOKEN}/setWebhook?url=https://your-webhook-url.com/")
 
 # Run server
-if name == 'main':
+if name == '__main__':
     app.run(port=5001)
