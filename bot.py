@@ -31,7 +31,7 @@ def handle_message(message):
 
 # Setup webhook once
 import requests
-requests.get(f"https://api.telegram.org/bot{BOT_TOKEN}/setWebhook?url=https://your-webhook-url.com/")
+requests.get(f"https://api.telegram.org/bot{BOT_TOKEN}/setWebhook?url=https://carry-pichunter-considering-democrat.trycloudflare.com/v1")
 
 # Run server
 if __name__ == '__main__':
